@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { List, ListItem, ListItemText, ListItemAvatar, Button, Modal, makeStyles, Input } from '@material-ui/core'
+import { List, ListItem, ListItemText, ListItemAvatar, Button, Modal, makeStyles, Input, FormControl } from '@material-ui/core'
 import './Todo.css';
 import db from './firebase'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
@@ -39,11 +39,16 @@ function Todo(props) {
             open={open}
             onClose={e => setOpen(false)}
         >
+            <form>
+            
             <div className={classes.paper}>
-                <h1>I am a modal</h1>
+                <FormControl>
                 <Input placeholder={props.todo.todo} value={input} onChange={event => setInput(event.target.value)}/>
-                <Button onClick={updateTodo}>Update Todo</Button>
+                </FormControl>
+                <Button disabled={!input} type="submit" onClick={updateTodo}>Update Todo</Button>
             </div>
+            
+            </form>
         </Modal>
         
         <List>
